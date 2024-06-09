@@ -177,6 +177,3 @@ curl -X PUT http://localhost:8080/expenses/1 \
 curl -X DELETE http://localhost:8080/expenses/1
 ```
 
-## Conclusion
-
-This documentation provides an overview of how to set up, run, and use the Expenses API. With the provided examples, you should be able to interact with the API to manage your expenses easily. If you have any questions or need further information, feel free to reach out.

@@ -1,49 +1,49 @@
 
-# Documentação da API de Despesas
+# Expenses API Documentation
 
-## Introdução
+## Introduction
 
-Esta é uma API simples para gerenciar despesas. A API permite criar, ler, atualizar e deletar despesas. A aplicação foi construída usando Go, Gin e SQLite, e é executada dentro de um contêiner Docker.
+This is a simple API for managing expenses. The API allows you to create, read, update, and delete expenses. The application was built using Go, Gin, and SQLite, and runs inside a Docker container.
 
-## Configuração e Execução
+## Setup and Execution
 
-### Pré-requisitos
+### Prerequisites
 
 - Docker
 - Docker Compose
 
-### Passos para Configuração e Execução
+### Setup and Execution Steps
 
-1. Clone o repositório do projeto:
+1. Clone the project repository:
    ```sh
    git clone https://github.com/marquesdavi/expenses-api
    cd expenses-api
    ```
 
-2. Construa e inicie a aplicação usando Docker Compose:
+2. Build and start the application using Docker Compose:
    ```sh
    docker-compose up --build
    ```
 
-3. A API estará disponível em `http://localhost:8080`.
+3. The API will be available at `http://localhost:8080`.
 
-## Endpoints da API
+## API Endpoints
 
-### 1. Criar uma Despesa
+### 1. Create an Expense
 
 - **URL:** `/expenses`
-- **Método:** `POST`
+- **Method:** `POST`
 - **Headers:**
   - `Content-Type: application/json`
-- **Body de Requisição:**
+- **Request Body:**
   ```json
   {
-    "description": "Compra de supermercado",
+    "description": "Grocery shopping",
     "amount": 150.75
   }
   ```
-- **Resposta de Sucesso:**
-  - **Código:** `201 Created`
+- **Success Response:**
+  - **Code:** `201 Created`
   - **Body:**
     ```json
     {
@@ -51,19 +51,19 @@ Esta é uma API simples para gerenciar despesas. A API permite criar, ler, atual
       "CreatedAt": "2024-06-09T23:00:28.000Z",
       "UpdatedAt": "2024-06-09T23:00:28.000Z",
       "DeletedAt": null,
-      "description": "Compra de supermercado",
+      "description": "Grocery shopping",
       "amount": 150.75
     }
     ```
 
-### 2. Listar Todas as Despesas
+### 2. List All Expenses
 
 - **URL:** `/expenses`
-- **Método:** `GET`
+- **Method:** `GET`
 - **Headers:** `None`
-- **Body de Requisição:** `None`
-- **Resposta de Sucesso:**
-  - **Código:** `200 OK`
+- **Request Body:** `None`
+- **Success Response:**
+  - **Code:** `200 OK`
   - **Body:**
     ```json
     [
@@ -72,20 +72,20 @@ Esta é uma API simples para gerenciar despesas. A API permite criar, ler, atual
         "CreatedAt": "2024-06-09T23:00:28.000Z",
         "UpdatedAt": "2024-06-09T23:00:28.000Z",
         "DeletedAt": null,
-        "description": "Compra de supermercado",
+        "description": "Grocery shopping",
         "amount": 150.75
       }
     ]
     ```
 
-### 3. Obter uma Despesa pelo ID
+### 3. Get an Expense by ID
 
 - **URL:** `/expenses/{id}`
-- **Método:** `GET`
+- **Method:** `GET`
 - **Headers:** `None`
-- **Body de Requisição:** `None`
-- **Resposta de Sucesso:**
-  - **Código:** `200 OK`
+- **Request Body:** `None`
+- **Success Response:**
+  - **Code:** `200 OK`
   - **Body:**
     ```json
     {
@@ -93,26 +93,26 @@ Esta é uma API simples para gerenciar despesas. A API permite criar, ler, atual
       "CreatedAt": "2024-06-09T23:00:28.000Z",
       "UpdatedAt": "2024-06-09T23:00:28.000Z",
       "DeletedAt": null,
-      "description": "Compra de supermercado",
+      "description": "Grocery shopping",
       "amount": 150.75
     }
     ```
 
-### 4. Atualizar uma Despesa
+### 4. Update an Expense
 
 - **URL:** `/expenses/{id}`
-- **Método:** `PUT`
+- **Method:** `PUT`
 - **Headers:**
   - `Content-Type: application/json`
-- **Body de Requisição:**
+- **Request Body:**
   ```json
   {
-    "description": "Compra de supermercado atualizada",
+    "description": "Updated grocery shopping",
     "amount": 200.00
   }
   ```
-- **Resposta de Sucesso:**
-  - **Código:** `200 OK`
+- **Success Response:**
+  - **Code:** `200 OK`
   - **Body:**
     ```json
     {
@@ -120,63 +120,63 @@ Esta é uma API simples para gerenciar despesas. A API permite criar, ler, atual
       "CreatedAt": "2024-06-09T23:00:28.000Z",
       "UpdatedAt": "2024-06-09T23:10:28.000Z",
       "DeletedAt": null,
-      "description": "Compra de supermercado atualizada",
+      "description": "Updated grocery shopping",
       "amount": 200.00
     }
     ```
 
-### 5. Deletar uma Despesa
+### 5. Delete an Expense
 
 - **URL:** `/expenses/{id}`
-- **Método:** `DELETE`
+- **Method:** `DELETE`
 - **Headers:** `None`
-- **Body de Requisição:** `None`
-- **Resposta de Sucesso:**
-  - **Código:** `204 No Content`
+- **Request Body:** `None`
+- **Success Response:**
+  - **Code:** `204 No Content`
   - **Body:** `None`
 
-## Exemplos de Requisição usando cURL
+## cURL Request Examples
 
-### Criar uma Despesa
+### Create an Expense
 
 ```sh
 curl -X POST http://localhost:8080/expenses \
 -H "Content-Type: application/json" \
 -d '{
-  "description": "Compra de supermercado",
+  "description": "Grocery shopping",
   "amount": 150.75
 }'
 ```
 
-### Listar Todas as Despesas
+### List All Expenses
 
 ```sh
 curl -X GET http://localhost:8080/expenses
 ```
 
-### Obter uma Despesa pelo ID
+### Get an Expense by ID
 
 ```sh
 curl -X GET http://localhost:8080/expenses/1
 ```
 
-### Atualizar uma Despesa
+### Update an Expense
 
 ```sh
 curl -X PUT http://localhost:8080/expenses/1 \
 -H "Content-Type: application/json" \
 -d '{
-  "description": "Compra de supermercado atualizada",
+  "description": "Updated grocery shopping",
   "amount": 200.00
 }'
 ```
 
-### Deletar uma Despesa
+### Delete an Expense
 
 ```sh
 curl -X DELETE http://localhost:8080/expenses/1
 ```
 
-## Conclusão
+## Conclusion
 
-Esta documentação fornece uma visão geral de como configurar, executar e usar a API de Despesas. Com os exemplos fornecidos, você deve ser capaz de interagir com a API para gerenciar suas despesas facilmente. Se tiver alguma dúvida ou precisar de mais informações, sinta-se à vontade para entrar em contato.
+This documentation provides an overview of how to set up, run, and use the Expenses API. With the provided examples, you should be able to interact with the API to manage your expenses easily. If you have any questions or need further information, feel free to reach out.
